@@ -37,7 +37,8 @@ class HelloWorldControllerMockMvcTest {
 
     @Test
     public void shouldReturn404() throws Exception {
-        this.mockMvc.perform(get("/nonsenseURL")).andDo(print()).andExpect(status().isNotFound());
+        this.mockMvc.perform(get("/nonsenseURL")).andDo(print())
+                .andExpect(status().isNotFound());
     }
 
 }

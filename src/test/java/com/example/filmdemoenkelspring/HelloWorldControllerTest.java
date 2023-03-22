@@ -22,12 +22,12 @@ class HelloWorldControllerTest {
     @Test
     public void helloWorld() throws Exception {
         assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/",
-                String.class)).contains("Hello World!!!!!!!!!");
+                String.class)).contains("Hello World!!!!!!");
     }
 
     @Test
     public void holaMundo() throws Exception {
         assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/esp",
-                String.class)).contains("Hola Mundo!!!!!!!!");
+                String.class)).contains("Hola Mundo!!!!!!");
     }
 }

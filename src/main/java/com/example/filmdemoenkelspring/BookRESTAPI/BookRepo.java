@@ -16,7 +16,6 @@ public class BookRepo {
         Book b5 = new Book(5, "Catcher in the Rye", "J.D. Salinger");
         Book b6 = new Book(6, "Sandman, vol 1", "Neil Gaiman");
         Book b7 = new Book(7, "Pale King", "David Foster Wallace");
-        Book b8 = new Book(7, "Pale King", "David Foster Wallace");
 
         bookList.add(b1);
         bookList.add(b2);

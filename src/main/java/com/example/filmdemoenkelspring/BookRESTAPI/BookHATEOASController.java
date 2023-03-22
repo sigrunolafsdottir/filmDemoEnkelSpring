@@ -16,28 +16,26 @@ public class BookHATEOASController {
     List<Book> bookList = br.getBookList();
 
 
-    @RequestMapping("/booksHATEOAS/{id}")
-    public EntityModel one(@PathVariable int id){
-        Book book =  bookList.stream().filter(b -> b.getId() == id).findFirst().orElse(null);
+    @GetMapping("/booksHATEOAS/{id}")
+    EntityModel<Book> one(@PathVariable Long id) {
 
-        return EntityModel.of(book,
+        Book book = bookList.stream().filter(b -> b.getId() == id).findFirst().orElse(null);
+
+        return EntityModel.of(book, //
                 linkTo(methodOn(BookHATEOASController.class).one(id)).withSelfRel(),
                 linkTo(methodOn(BookController.class).getAllBooks()).withRel("books"));
     }
 
+    @GetMapping("/booksHATEOAS")
+    CollectionModel<EntityModel<Book>> all() {
 
-    @RequestMapping("/booksHATEOAS")
-    public CollectionModel<EntityModel<Book>> all(){
         List<EntityModel<Book>> books = bookList.stream()
                 .map(book -> EntityModel.of(book,
-                        linkTo(methodOn(BookHATEOASController.class).one(book.getId())).withSelfRel(),
+                        linkTo(methodOn(BookHATEOASController.class).one((long)book.getId())).withSelfRel(),
                         linkTo(methodOn(BookHATEOASController.class).all()).withRel("books"))).toList();
 
-        return CollectionModel.of(books,
-                linkTo(methodOn(BookHATEOASController.class)
-                        .all()).withSelfRel());
+        return CollectionModel.of(books, linkTo(methodOn(BookHATEOASController.class).all()).withSelfRel());
     }
-
 
 
 }

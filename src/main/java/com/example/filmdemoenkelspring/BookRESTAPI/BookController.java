@@ -1,5 +1,8 @@
 package com.example.filmdemoenkelspring.BookRESTAPI;
 
+import com.example.filmdemoenkelspring.BookRESTAPI.Book;
+import com.example.filmdemoenkelspring.BookRESTAPI.BookRepo;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -34,13 +37,13 @@ public class BookController {
 
     @RequestMapping("/books/addByGET")
     public List<Book> addByGET(@RequestParam int id,
-                               @RequestParam String title, @RequestParam String author){
+                               @RequestParam String title,  @RequestParam String author){
         bookList.add(new Book(id, title, author));
         return bookList;
     }
 
     @PostMapping("/books/add")
-    public List<Book> addBookByPOST(@RequestBody Book b){
+    public List<Book> addBookByPOST(@Valid @RequestBody Book b){
         bookList.add(b);
         return bookList;
     }

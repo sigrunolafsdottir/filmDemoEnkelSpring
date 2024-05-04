@@ -26,6 +26,8 @@ public class BookHATEOASController {
                 linkTo(methodOn(BookController.class).getAllBooks()).withRel("books"));
     }
 
+
+
     @GetMapping("/booksHATEOAS")
     CollectionModel<EntityModel<Book>> all() {
 
